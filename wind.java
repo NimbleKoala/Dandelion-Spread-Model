@@ -1,28 +1,25 @@
 public class wind {
-    private String direction;
+    private double angle;
+    private double distance;
 
     public wind() {
+        angle = Math.random() * 360;
+    }
+
+    public void generateDistance() {
         double a = Math.random();
-        if (a < 0.125) {
-            direction = "North";
-        } else if (a < 0.25) {
-            direction = "Northwest";
-        } else if (a < 0.375) {
-            direction = "West";
-        } else if (a < 0.5) {
-            direction = "Southwest";
-        } else if (a < 0.625) {
-            direction = "South";
-        } else if (a < 0.75) {
-            direction = "Southeast";
-        } else if (a < 0.875) {
-            direction = "East";
-        } else {
-            direction = "Northeast";
+        if (a > 0.05) {
+            this.distance = Math.random() * 200;
+        } else if (a > 0.006) {
+            this.distance = Math.random() * 1800 + 200;
         }
     }
 
-    public String getDirection() {
-        return direction;
+    public int getX() {
+        return (int) (this.distance * Math.cos(this.angle) + (Math.random() * 40 - 20) + 0.5);
+    }
+
+    public int getY() {
+        return (int) (this.distance * Math.sin(this.angle) + (Math.random() * 40 - 20) + 0.5);
     }
 }

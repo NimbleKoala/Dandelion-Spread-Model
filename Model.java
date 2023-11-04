@@ -13,112 +13,29 @@ public class Model {
         int timeSinceRain = 5;
         dandelion[][] field = new dandelion[2000][2000];
         field[1000][1000] = new dandelion(365, "seeding", 250, (int) (Math.random() * 3) + 4);
-        for (int h = 0; h < 1095; h++) {
+        for (int h = 0; h < 730; h++) {
             if (Math.random() < 0.2) {
                 timeSinceRain = 0;
             }
+            wind win = new wind();
             for (int i = 0; i < field.length; i++) {
                 for (int j = 0; j < field[0].length; j++) {
                     if (field[i][j] != null) {
                         field[i][j].increaseAge();
                         field[i][j].increaseTimeSince();
                         if (field[i][j].getTimeSince() > 150 && (field[i][j].getAge() > 365 || Math.random() < 0.05)
-                                && h % 365 < 182 && Math.random() < 0.4) {
+                                && h % 365 < 182) {
                             field[i][j].setSeeds(250);
                         }
                         if (field[i][j].getSeeds() > 0 && timeSinceRain > 1) {
-                            wind a = new wind();
-                            if (a.getDirection().equals("North")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = i + (int) (Math.random() * 200) + (int) (Math.random() * 40 - 20);
-                                        int c = j + (int) (Math.random() * 40 - 20);
-                                        if (b < 2000 && c < 2000 && c >= 0 && b >= 0 && field[b][c] == null) {
-                                            field[b][c] = new dandelion();
-                                            population++;
-                                        }
-
-                                    }
-                                }
-                            } else if (a.getDirection().equals("South")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = i + (int) (Math.random() * -200) + (int) (Math.random() * 40 - 20);
-                                        int c = j + (int) (Math.random() * 40 - 20);
-                                        if (b < 2000 && c < 2000 && c >= 0 && b >= 0 && field[b][c] == null) {
-                                            field[b][c] = new dandelion();
-                                            population++;
-                                        }
-                                    }
-                                }
-                            } else if (a.getDirection().equals("West")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = i + (int) (Math.random() * 40 - 20);
-                                        int c = j + (int) (Math.random() * -200) + (int) (Math.random() * 40 - 20);
-                                        if (b < 2000 && c < 2000 && c >= 0 && b >= 0 && field[b][c] == null) {
-                                            field[b][c] = new dandelion();
-                                            population++;
-                                        }
-                                    }
-                                }
-                            } else if (a.getDirection().equals("East")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = i + (int) (Math.random() * 40 - 20);
-                                        int c = j + (int) (Math.random() * 200) + (int) (Math.random() * 40 - 20);
-                                        if (b < 2000 && c < 2000 && c >= 0 && b >= 0 && field[b][c] == null) {
-                                            field[b][c] = new dandelion();
-                                            population++;
-                                        }
-                                    }
-                                }
-                            } else if (a.getDirection().equals("Northwest")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = (int) (Math.random() * 200);
-                                        int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
-                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
-                                        if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
-                                            field[c][d] = new dandelion();
-                                            population++;
-                                        }
-                                    }
-                                }
-                            } else if (a.getDirection().equals("Northeast")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = (int) (Math.random() * 200);
-                                        int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
-                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
-                                        if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
-                                            field[c][d] = new dandelion();
-                                            population++;
-                                        }
-                                    }
-                                }
-                            } else if (a.getDirection().equals("Southwest")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = (int) (Math.random() * 200);
-                                        int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
-                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
-                                        if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
-                                            field[c][d] = new dandelion();
-                                            population++;
-                                        }
-                                    }
-                                }
-                            } else if (a.getDirection().equals("Southeast")) {
-                                for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
-                                    if (Math.random() < 0.03) {
-                                        int b = (int) (Math.random() * 200);
-                                        int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
-                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
-                                        if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
-                                            field[c][d] = new dandelion();
-                                            population++;
-                                        }
+                            win.generateDistance();
+                            for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
+                                if (Math.random() < 0.03) {
+                                    int b = i + win.getX();
+                                    int c = j + win.getY();
+                                    if (b < 2000 && c < 2000 && c >= 0 && b >= 0 && field[b][c] == null) {
+                                        field[b][c] = new dandelion();
+                                        population++;
                                     }
                                 }
                             }
@@ -127,10 +44,11 @@ public class Model {
                         }
                     }
                 }
+                timeSinceRain++;
             }
-            timeSinceRain++;
+            System.out.println(population);
         }
-        System.out.println(population);
+
         // }
 
         try {
