@@ -8,12 +8,13 @@ import javax.imageio.ImageIO;
 
 public class Model {
     public static void main(String[] args) {
+        // for (int z = 0; z < 10; z++) {
         int population = 1;
         int timeSinceRain = 5;
         dandelion[][] field = new dandelion[2000][2000];
         field[1000][1000] = new dandelion(365, "seeding", 250, (int) (Math.random() * 3) + 4);
-        for (int h = 0; h < 1000; h++) {
-            if (Math.random() > 0.2) {
+        for (int h = 0; h < 365; h++) {
+            if (Math.random() < 0.2) {
                 timeSinceRain = 0;
             }
             for (int i = 0; i < field.length; i++) {
@@ -21,12 +22,13 @@ public class Model {
                     if (field[i][j] != null) {
                         field[i][j].increaseAge();
                         field[i][j].increaseTimeSince();
-                        if (field[i][j].getTimeSince() > 150 && (field[i][j].getAge() > 365 || Math.random() < 0.001)
+                        if (field[i][j].getTimeSince() > 150 && (field[i][j].getAge() > 365 || Math.random() < 0.05)
                                 && h % 365 < 182 && Math.random() < 0.4) {
                             field[i][j].setSeeds(250);
                         }
-                        if (field[i][j].getSeeds() > 0 && timeSinceRain < 1) {
+                        if (field[i][j].getSeeds() > 0 && timeSinceRain > 1) {
                             wind a = new wind();
+                            System.out.println(a.getDirection());
                             if (a.getDirection().equals("North")) {
                                 for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
                                     if (Math.random() < 0.03) {
@@ -127,9 +129,10 @@ public class Model {
                     }
                 }
             }
+            timeSinceRain++;
         }
-        System.out.println(field[1000][1000].getAge());
         System.out.println(population);
+        // }
 
         try {
             BufferedImage bufferedImage = new BufferedImage(2000, 2000,
@@ -151,6 +154,5 @@ public class Model {
             ImageIO.write(bufferedImage, "png", file);
         } catch (IOException e) {
         }
-
     }
 }
