@@ -1,11 +1,10 @@
 
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import java.io.FileWriter;
 
 public class Model {
     public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class Model {
                         field[i][j].increaseAge();
                         field[i][j].increaseTimeSince();
                         if (field[i][j].getTimeSince() > 150 && (field[i][j].getAge() > 365 || Math.random() < 0.001)
-                                && h % 365 < 182) {
+                                && h % 365 < 182 && Math.random() < 0.4) {
                             field[i][j].setSeeds(250);
                         }
                         if (field[i][j].getSeeds() > 0 && timeSinceRain < 1) {
@@ -131,27 +130,27 @@ public class Model {
         }
         System.out.println(field[1000][1000].getAge());
         System.out.println(population);
-        /*
-         * try {
-         * BufferedImage bufferedImage = new BufferedImage(2000, 2000,
-         * BufferedImage.TYPE_INT_RGB);
-         * Graphics2D g2d = bufferedImage.createGraphics();
-         * for (int i = 0; i < field.length; i++) {
-         * for (int j = 0; j < field[0].length; j++) {
-         * if (field[i][j] == null) {
-         * g2d.setColor(Color.white);
-         * g2d.fillRect(i, j, i, j);
-         * } else {
-         * g2d.setColor(Color.black);
-         * g2d.fillRect(i, j, i, j);
-         * }
-         * }
-         * }
-         * g2d.dispose();
-         * File file = new File("myimage.png");
-         * ImageIO.write(bufferedImage, "png", file);
-         * } catch (IOException e) {
-         * }
-         */
+
+        try {
+            BufferedImage bufferedImage = new BufferedImage(2000, 2000,
+                    BufferedImage.TYPE_INT_RGB);
+            Graphics g2d = bufferedImage.createGraphics();
+            for (int i = 0; i < field.length; i++) {
+                for (int j = 0; j < field[0].length; j++) {
+                    if (field[i][j] == null) {
+                        g2d.setColor(Color.white);
+                        g2d.fillRect(i, j, i, j);
+                    } else {
+                        g2d.setColor(Color.black);
+                        g2d.fillRect(i, j, i, j);
+                    }
+                }
+            }
+            g2d.dispose();
+            File file = new File("myimage.png");
+            ImageIO.write(bufferedImage, "png", file);
+        } catch (IOException e) {
+        }
+
     }
 }
