@@ -9,7 +9,7 @@ public class dandelion {
         age = 0;
         stage = "seed";
         seeds = 0;
-        heads = (int) Math.random() * 10;
+        heads = (int) (Math.random() * 3) + 4;
         timeSince = 0;
     }
 
@@ -43,6 +43,10 @@ public class dandelion {
 
     public void increaseTimeSince() {
         this.timeSince++;
+    }
+
+    public void setTimeSince(int a) {
+        timeSince = a;
     }
 
     public int getHeads() {
