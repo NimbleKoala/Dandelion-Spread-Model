@@ -1,6 +1,5 @@
 public class wind {
     private String direction;
-    private double speed;
 
     public wind() {
         double a = Math.random();
@@ -13,14 +12,9 @@ public class wind {
         } else {
             direction = "East";
         }
-        speed = Math.random() * 23 * 0.44704;
     }
 
     public String getDirection() {
         return direction;
-    }
-
-    public int getSpeed() {
-        return (int) speed;
     }
 }

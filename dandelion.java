@@ -3,17 +3,22 @@ public class dandelion {
     private String stage;
     private int seeds;
     private int heads;
+    private int timeSince;
 
     public dandelion() {
         age = 0;
         stage = "seed";
         seeds = 0;
+        heads = (int) Math.random() * 10;
+        timeSince = 0;
     }
 
-    public dandelion(int a, String b, int c) {
+    public dandelion(int a, String b, int c, int d) {
         age = a;
         stage = b;
         seeds = c;
+        heads = d;
+        timeSince = 0;
     }
 
     public void increaseAge() {
@@ -30,5 +35,17 @@ public class dandelion {
 
     public void setSeeds(int a) {
         this.seeds = a;
+    }
+
+    public int getTimeSince() {
+        return timeSince;
+    }
+
+    public void increaseTimeSince() {
+        this.timeSince++;
+    }
+
+    public int getHeads() {
+        return this.heads;
     }
 }
