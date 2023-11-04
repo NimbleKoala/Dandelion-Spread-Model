@@ -13,7 +13,7 @@ public class Model {
         int timeSinceRain = 5;
         dandelion[][] field = new dandelion[2000][2000];
         field[1000][1000] = new dandelion(365, "seeding", 250, (int) (Math.random() * 3) + 4);
-        for (int h = 0; h < 365; h++) {
+        for (int h = 0; h < 1095; h++) {
             if (Math.random() < 0.2) {
                 timeSinceRain = 0;
             }
@@ -28,7 +28,6 @@ public class Model {
                         }
                         if (field[i][j].getSeeds() > 0 && timeSinceRain > 1) {
                             wind a = new wind();
-                            System.out.println(a.getDirection());
                             if (a.getDirection().equals("North")) {
                                 for (int k = 0; k < field[i][j].getSeeds() * field[i][j].getHeads(); k++) {
                                     if (Math.random() < 0.03) {
@@ -79,7 +78,7 @@ public class Model {
                                     if (Math.random() < 0.03) {
                                         int b = (int) (Math.random() * 200);
                                         int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
-                                        int d = j + c * -1;
+                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
                                         if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
                                             field[c][d] = new dandelion();
                                             population++;
@@ -91,7 +90,7 @@ public class Model {
                                     if (Math.random() < 0.03) {
                                         int b = (int) (Math.random() * 200);
                                         int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
-                                        int d = j + c;
+                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
                                         if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
                                             field[c][d] = new dandelion();
                                             population++;
@@ -103,7 +102,7 @@ public class Model {
                                     if (Math.random() < 0.03) {
                                         int b = (int) (Math.random() * 200);
                                         int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
-                                        int d = j + c;
+                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
                                         if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
                                             field[c][d] = new dandelion();
                                             population++;
@@ -115,7 +114,7 @@ public class Model {
                                     if (Math.random() < 0.03) {
                                         int b = (int) (Math.random() * 200);
                                         int c = i + (int) (Math.sin(45) * b + (Math.random() * 40 - 20)) * -1;
-                                        int d = j + c * -1;
+                                        int d = j + (int) (Math.sin(45) * b + (Math.random() * 40 - 20));
                                         if (c < 2000 && d < 2000 && c >= 0 && d >= 0 && field[c][d] == null) {
                                             field[c][d] = new dandelion();
                                             population++;
