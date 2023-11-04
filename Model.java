@@ -1,5 +1,11 @@
-import java.io.FileWriter;
+
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.io.FileWriter;
 
 public class Model {
     public static void main(String[] args) {
@@ -77,18 +83,22 @@ public class Model {
         System.out.println(field[1000][1000].getAge());
         System.out.println(population);
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
+            BufferedImage bufferedImage = new BufferedImage(2000, 2000, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = bufferedImage.createGraphics();
             for (int i = 0; i < field.length; i++) {
                 for (int j = 0; j < field[0].length; j++) {
                     if (field[i][j] == null) {
-                        myWriter.write("0");
+                        g2d.setColor(Color.white);
+                        g2d.fillRect(i, j, i, j);
                     } else {
-                        myWriter.write("1");
+                        g2d.setColor(Color.black);
+                        g2d.fillRect(i, j, i, j);
                     }
                 }
-                myWriter.write(System.getProperty("line.separator"));
             }
-            myWriter.close();
+            g2d.dispose();
+            File file = new File("myimage.png");
+            ImageIO.write(bufferedImage, "png", file);
         } catch (IOException e) {
         }
     }
