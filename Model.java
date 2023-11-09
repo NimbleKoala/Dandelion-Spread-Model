@@ -14,7 +14,7 @@ public class Model {
         int[][] sixMonth = new int[2000][2000];
         int[][] oneYear = new int[2000][2000];
         int[][] twoYear = new int[2000][2000];
-        for (int z = 0; z < 2000; z++) {
+        for (int z = 0; z < 500; z++) {
             int population = 1;
             int timeSinceRain = 5;
             dandelion[][] field = new dandelion[2000][2000];
@@ -62,7 +62,7 @@ public class Model {
                         }
                     }
                 } else if (h == 61) {
-                    System.out.print(population + " ");
+                    System.out.print(population + "\t");
                     for (int i = 0; i < 2000; i++) {
                         for (int j = 0; j < 2000; j++) {
                             if (field[i][j] != null) {
@@ -71,7 +71,7 @@ public class Model {
                         }
                     }
                 } else if (h == 91) {
-                    System.out.print(population + " ");
+                    System.out.print(population + "\t");
                     for (int i = 0; i < 2000; i++) {
                         for (int j = 0; j < 2000; j++) {
                             if (field[i][j] != null) {
@@ -80,7 +80,7 @@ public class Model {
                         }
                     }
                 } else if (h == 182) {
-                    System.out.print(population + " ");
+                    System.out.print(population + "\t");
                     for (int i = 0; i < 2000; i++) {
                         for (int j = 0; j < 2000; j++) {
                             if (field[i][j] != null) {
@@ -89,7 +89,7 @@ public class Model {
                         }
                     }
                 } else if (h == 365) {
-                    System.out.print(population + " ");
+                    System.out.print(population + "\t");
                     for (int i = 0; i < 2000; i++) {
                         for (int j = 0; j < 2000; j++) {
                             if (field[i][j] != null) {
